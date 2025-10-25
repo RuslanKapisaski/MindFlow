@@ -23,3 +23,12 @@ Your Followed Blogs
 🔒 Smart Access Control
 Route guards ensure that only authenticated users can create or modify blogs, keeping the app safe and consistent.
 
+### 1. Initialize project
+
+- [x] Initialize project 'npm i --yes'
+  - [x] Change module system
+  - [x] Add start file (in src folder)
+  - [x] Add dev script ('node --watch src/index.js')
+  - [x] Config debbuger
+  - [x] Add resources
+
