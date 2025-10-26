@@ -32,3 +32,12 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
   - [x] Config debbuger
   - [x] Add resources
 
+### 2. Express
+
+- [x] Install express 'npm i express'
+- [x] Initialize express server
+- [x] Setup static middleware
+- [x] Add body parser
+- [x] Add home controller
+- [x] Add route file
+- [x] Add error controller
