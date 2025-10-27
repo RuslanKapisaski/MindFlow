@@ -45,3 +45,15 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
 - [x] Add home controller
 - [x] Add route file
 - [x] Add error controller
+### 3. Handlebars
+
+- [x] Install handlebars 'npm i express-handlebars'
+- [x] Config handlebars engine
+- [x] Use handlebars engine
+- [x] Config handlebars file extension
+- [x] Set views folder
+- [x] Add home view
+- [x] Render home view without layout
+- [x] Fix assests path
+- [x] Add layout
+- [x] Config handlebars to work with mongoose documents (no need to lean) 'runtimeOptions: { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault:true }'
