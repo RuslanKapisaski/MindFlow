@@ -57,3 +57,10 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
 - [x] Fix assests path
 - [x] Add layout
 - [x] Config handlebars to work with mongoose documents (no need to lean) 'runtimeOptions: { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault:true }'
+
+### 4. Database
+
+- [x] Install Mongoose
+- [x] Connect to databse
+- [x] Error hadling (try-catch) on connecting db
+- [x] Add simple user model

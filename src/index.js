@@ -3,6 +3,18 @@ import handlebars from "express-handlebars";
 
 import routes from "./routes.js";
 const app = express();
+
+//setup databse
+try {
+  await mongoose.connect(
+    "mongodb://127.0.0.1:27017/",
+    { dbName: "mind-blog" } //proj name}
+  );
+  console.log("Successfully connected to database!");
+} catch (error) {
+  console.error("Cannot connect to database: ", error.message);
+}
+
 //config handlebars
 app.engine(
   "hbs",
