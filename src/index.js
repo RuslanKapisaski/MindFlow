@@ -33,6 +33,10 @@ app.set("view engine", "hbs");
 app.set("views", "src/views");
 //static middleware
 app.use(express.static("src/public"));
+
+//cookie parser middleware
+app.use(cookieParser());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 app.listen(process.env.PORT, () =>
