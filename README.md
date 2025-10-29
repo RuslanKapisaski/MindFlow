@@ -64,3 +64,14 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
 - [x] Connect to databse
 - [x] Error hadling (try-catch) on connecting db
 - [x] Add simple user model
+### 5. Register
+
+- [x] Fix navigation links
+- [x] Add user controller
+- [x] Create register view
+- [x] Render register view
+- [x] Modify register form
+- [x] Create post route for register
+- [x] Create user service
+- [x] Validate if user exists
+- [x] Hash password

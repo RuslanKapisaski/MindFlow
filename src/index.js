@@ -34,3 +34,9 @@ app.set("views", "src/views");
 //static middleware
 app.use(express.static("src/public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(routes);
+app.listen(process.env.PORT, () =>
+  console.log(
+    `Server is listening on port http://localhost:${process.env.PORT}`
+  )
+);
