@@ -75,3 +75,19 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
 - [x] Create user service
 - [x] Validate if user exists
 - [x] Hash password
+### 6. Login
+
+- [x] Fix navigation links
+- [x] Create login view
+- [x] Render login view
+- [x] Modify login form
+- [x] Create post route for login
+- [x] Validate if user exists
+- [x] Validate if user password is the same
+- [x] Authorization
+  - [x] Install jsonwebtoken
+  - [x] Create jwt_secret as a constant
+  - [x] Create token
+  - [x] Return token as a result of login service
+  - [x] Create cookie in user controller and attach the token to it
+- [x] Redirect to home page
