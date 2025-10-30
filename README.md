@@ -91,3 +91,7 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
   - [x] Return token as a result of login service
   - [x] Create cookie in user controller and attach the token to it
 - [x] Redirect to home page
+### 7. Logout
+
+- [x] Add logout navigation link
+- [x] Create get method and clear cookue

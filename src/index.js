@@ -1,5 +1,6 @@
 import express, { urlencoded } from "express";
 import handlebars from "express-handlebars";
+import cookieParser from "cookie-parser";
 
 import routes from "./routes.js";
 const app = express();

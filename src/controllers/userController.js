@@ -43,4 +43,8 @@ userController.post("/login", isGuest, async (req, res) => {
     });
   }
 });
+userController.get("/logout", isAuth, (req, res) => {
+  res.clearCookie("auth");
+  res.redirect("/");
+});
 export default userController;
