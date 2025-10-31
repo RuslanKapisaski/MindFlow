@@ -95,3 +95,10 @@ Route guards ensure that only authenticated users can create or modify blogs, ke
 
 - [x] Add logout navigation link
 - [x] Create get method and clear cookue
+
+### 8. Authentication
+
+- [x] Add cookie parser 'npm i cookie-parser'
+- [x] Create auth middleware
+- [x] Use auth middleware in index program
+

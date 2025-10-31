@@ -1,8 +1,10 @@
 import express, { urlencoded } from "express";
 import handlebars from "express-handlebars";
+import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
 import routes from "./routes.js";
+import { authMiddleware } from "./middlewares/authMiddleware.js";
 const app = express();
 
 //setup databse
@@ -39,6 +41,10 @@ app.use(express.static("src/public"));
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
+
+//Auth middleware
+app.use(authMiddleware);
+
 app.use(routes);
 app.listen(process.env.PORT, () =>
   console.log(
