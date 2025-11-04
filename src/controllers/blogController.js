@@ -12,5 +12,9 @@ blogController.get("/catalog", async (req, res) => {
     throw new Error(`Error during creating blogs: ${errorMessage}`);
   }
 });
+
+blogController.get("/create", isAuth, (req, res) => {
+  res.render("blogs/create");
+});
 });
 export default blogController;
