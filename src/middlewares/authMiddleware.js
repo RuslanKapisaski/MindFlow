@@ -24,4 +24,11 @@ export function authMiddleware(req, res, next) {
 		res.clearCookie("auth");
 		res.redirect("/users/login");
 	}
+export function isAuth(req, res, next) {
+  if (!req.isAuthenticated) {
+    return res.redirect("/users/login");
+  }
+
+  next();
+}
 }
