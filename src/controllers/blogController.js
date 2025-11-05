@@ -16,5 +16,12 @@ blogController.get("/catalog", async (req, res) => {
 blogController.get("/create", isAuth, (req, res) => {
   res.render("blogs/create");
 });
+
+blogController.post("/create", isAuth, async (req, res) => {
+  const blogData = req.body;
+  const userId = req.user.id;
+
+    const newBlog = await blogService.create(blogData, userId);
+    res.redirect("/blogs/catalog");
 });
 export default blogController;
