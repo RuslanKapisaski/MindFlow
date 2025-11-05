@@ -3,6 +3,11 @@ export default {
   create(blogData, userId) {
     return Blog.create({ ...blogData, owner: userId });
   },
+
+  getOneById(blogId) {
+    return Blog.findById(blogId).populate(["owner", "followers"]);
+  },
+
   getAll() {
     return Blog.find();
   },
