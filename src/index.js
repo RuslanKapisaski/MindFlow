@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 
 import routes from "./routes.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+
 const app = express();
 
 //setup databse
@@ -46,6 +48,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authMiddleware);
 
 app.use(routes);
+
+app.use(errorMiddleware);
+
 app.listen(process.env.PORT, () =>
   console.log(
     `Server is listening on port http://localhost:${process.env.PORT}`
