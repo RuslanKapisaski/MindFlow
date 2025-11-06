@@ -12,6 +12,15 @@ export default {
   getAll() {
     return Blog.find();
   },
+  async remove(userId, blogId) {
+    const blog = await Blog.findById(blogId);
+
+    if (!blog.owner.equals(userId)) {
+      throw new Error("Cannot delete if you are not an owner!");
+    }
+    return Blog.findByIdAndDelete(blogId);
+  },
+
   edit(blogId, blogData) {
     return Blog.findByIdAndUpdate(blogId, blogData, { runValidators: true });
   },

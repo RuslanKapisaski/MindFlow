@@ -26,6 +26,18 @@ blogController.post("/create", isAuth, async (req, res) => {
 
     const newBlog = await blogService.create(blogData, userId);
     res.redirect("/blogs/catalog");
+blogController.get("/:blogId/delete", isAuth, async (req, res) => {
+  const blogId = req.params.blogId;
+  const userId = req.user.id;
+
+  try {
+    await blogService.remove(userId, blogId);
+    res.redirect("/blogs/catalog");
+  } catch (err) {
+    res.render("404", { error: getErrorMessage(err) });
+  }
+});
+
 blogController.get("/:blogId/edit", isAuth, async (req, res) => {
   const userId = req.user.id;
   const blogId = req.params.blogId;
