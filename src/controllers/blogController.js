@@ -1,8 +1,11 @@
 import { Router } from "express";
+
 import { isAuth } from "../middlewares/authMiddleware.js";
 import blogService from "../services/blogService.js";
 import { getErrorMessage } from "../utils/getErrorMessage.js";
+
 const blogController = Router();
+
 blogController.get("/catalog", async (req, res) => {
   try {
     const blogs = await blogService.getAll();
@@ -23,5 +26,17 @@ blogController.post("/create", isAuth, async (req, res) => {
 
     const newBlog = await blogService.create(blogData, userId);
     res.redirect("/blogs/catalog");
+blogController.get("/:blogId/edit", isAuth, async (req, res) => {
+  const userId = req.user.id;
+  const blogId = req.params.blogId;
+
+  try {
+    const blog = await blogService.getOneById(blogId);
+
+  } catch (err) {
+    res.render("404", { error: getErrorMessage(err) });
+  }
+  res.render("edit", { blog });
+});
 });
 export default blogController;
