@@ -38,5 +38,19 @@ blogController.get("/:blogId/edit", isAuth, async (req, res) => {
   }
   res.render("edit", { blog });
 });
+
+blogController.post("/:blogId/edit", async (req, res) => {
+  const blogId = req.params.blogId;
+  const blogData = req.body;
+
+  try {
+    await blogService.edit(blogId, blogData);
+    res.redirect("/blogs/catalog");
+  } catch (err) {
+    res.render("edit", {
+      blog: blogData,
+      error: getErrorMessage(err),
+    });
+  }
 });
 export default blogController;

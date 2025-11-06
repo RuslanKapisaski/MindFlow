@@ -1,4 +1,5 @@
 import Blog from "../models/Blog.js";
+
 export default {
   create(blogData, userId) {
     return Blog.create({ ...blogData, owner: userId });
@@ -10,5 +11,8 @@ export default {
 
   getAll() {
     return Blog.find();
+  },
+  edit(blogId, blogData) {
+    return Blog.findByIdAndUpdate(blogId, blogData, { runValidators: true });
   },
 };
