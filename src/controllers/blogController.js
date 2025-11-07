@@ -24,8 +24,42 @@ blogController.post("/create", isAuth, async (req, res) => {
   const blogData = req.body;
   const userId = req.user.id;
 
+  try {
     const newBlog = await blogService.create(blogData, userId);
     res.redirect("/blogs/catalog");
+  } catch (err) {
+    const errMessage = getErrorMessage(err);
+
+    res
+      .status(404)
+      .render("blogs/create", { blog: blogData, error: errMessage });
+  }
+});
+
+blogController.get("/:blogId/details", async (req, res) => {
+  try {
+    const blogId = req.params.blogId;
+    const blog = await blogService.getOneById(blogId);
+    const userId = req.user?.id;
+    const isOwner = blog.owner.equals(userId);
+
+    const followers = blog.followers
+      .map((follower) => follower.email)
+      .join(", ");
+
+    const isFollowing = blog.followers.some((follower) =>
+      follower.equals(userId)
+    );
+
+    res
+      .status(200)
+      .render("blogs/details", { blog, isOwner, followers, isFollowing });
+  } catch (err) {
+    const errMessage = getErrorMessage(err);
+    throw new Error(`Error while reaching details page: ${errMessage}`);
+  }
+});
+
 blogController.get("/:blogId/delete", isAuth, async (req, res) => {
   const blogId = req.params.blogId;
   const userId = req.user.id;

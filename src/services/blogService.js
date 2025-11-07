@@ -12,6 +12,15 @@ export default {
   getAll() {
     return Blog.find();
   },
+
+  getAllByOwner(ownerId) {
+    return Blog.find({ owner: ownerId });
+  },
+
+  getAllByFollower(followerId) {
+    return Blog.find().in("followers", followerId);
+  },
+
   async remove(userId, blogId) {
     const blog = await Blog.findById(blogId);
 
