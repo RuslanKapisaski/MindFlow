@@ -13,6 +13,10 @@ export default {
     return Blog.find();
   },
 
+  getLatest() {
+    return Blog.find().sort({ _id: -1 }).limit(3);
+  },
+
   getAllByOwner(ownerId) {
     return Blog.find({ owner: ownerId });
   },
