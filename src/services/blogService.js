@@ -25,6 +25,18 @@ export default {
     return Blog.find().in("followers", followerId);
   },
 
+  async follow(blogId, userId) {
+    const blog = await Blog.findById(blogId);
+    if (blog.owner.equals(userId)) {
+      throw new Error(`Owner cannot follow blog!`);
+    }
+
+    blog.followers.push(userId);
+
+    return blog.save({ runValidators: true });
+    //return Blog.findByIdAndUpdate(blogId, { $push: { followers: userId } });
+  },
+
   async remove(userId, blogId) {
     const blog = await Blog.findById(blogId);
 

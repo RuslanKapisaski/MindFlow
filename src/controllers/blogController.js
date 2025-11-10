@@ -60,6 +60,19 @@ blogController.get("/:blogId/details", async (req, res) => {
   }
 });
 
+blogController.get("/:blogId/follow", isAuth, async (req, res) => {
+  const blogId = req.params.blogId;
+  const userId = req.user.id;
+
+  try {
+    await blogService.follow(blogId, userId);
+    res.redirect(`/blogs/${blogId}/details`);
+  } catch (err) {
+    const errorMessage = getErrorMessage(err);
+    throw new Error(`Error during following a blog: ${errorMessage}`);
+  }
+});
+
 blogController.get("/:blogId/delete", isAuth, async (req, res) => {
   const blogId = req.params.blogId;
   const userId = req.user.id;
