@@ -92,6 +92,9 @@ blogController.get("/:blogId/edit", isAuth, async (req, res) => {
   try {
     const blog = await blogService.getOneById(blogId);
 
+    if (!blog.owner.equals(req.userId)) {
+      return res.send("Cannot edit when you are not an owner!");
+    }
   } catch (err) {
     res.render("404", { error: getErrorMessage(err) });
   }
