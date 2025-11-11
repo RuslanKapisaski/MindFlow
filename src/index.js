@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import routes from "./routes.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
+import pageHelpers from "./views/helpers/pageHelpers.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 const app = express();
